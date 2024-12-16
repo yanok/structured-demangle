@@ -1,0 +1,9 @@
+{
+	"authors": [
+		"Ilya Yanok"
+	],
+	"copyright": "Copyright © 2024, Ilya Yanok",
+	"description": "Modification of demangle module that supports structured output",
+	"license": "BSL-1.0",
+	"name": "structured-demangle"
+}
