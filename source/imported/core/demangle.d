@@ -36,7 +36,7 @@ private struct NoHooks
     // static char[] parseType(ref Demangle, char[])
 }
 
-private struct Demangle(Hooks = NoHooks)
+struct Demangle(Hooks = NoHooks)
 {
     // NOTE: This implementation currently only works with mangled function
     //       names as they exist in an object file.  Type names mangled via
