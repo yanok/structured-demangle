@@ -2,7 +2,7 @@ module structured_demangle;
 
 import imported.core.demangle;
 import symbol_builder;
-import types;
+public import types;
 
 Node structuredDemangle(return scope const(char)[] buf, return scope char[] dst = null, CXX_DEMANGLER __cxa_demangle = null)
 {
