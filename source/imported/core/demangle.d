@@ -1957,6 +1957,15 @@ pure @safe:
     */
     void parseSymbolName(out bool errStatus) scope nothrow
     {
+        version(structured_demangle) {
+            static if (do_structured) {
+                auto val_start = dst.length;
+                hooks.enter(Node.Kind.SymbolName);
+                scope(success) {
+                    hooks.exit(dst[val_start..$].getSlice);
+                }
+            }
+        }
         debug(trace) printf( "parseSymbolName+\n" );
         debug(trace) scope(success) printf( "parseSymbolName-\n" );
 
