@@ -1704,6 +1704,15 @@ pure @safe:
     */
     void parseTemplateArgs(out bool errStatus) scope nothrow
     {
+        version(structured_demangle) {
+            static if (do_structured) {
+                auto val_start = dst.length;
+                hooks.enter(Node.Kind.TemplateArguments);
+                scope(success) {
+                    hooks.exit(dst[val_start..$].getSlice);
+                }
+            }
+        }
         debug(trace) printf( "parseTemplateArgs+\n" );
         debug(trace) scope(success) printf( "parseTemplateArgs-\n" );
 
