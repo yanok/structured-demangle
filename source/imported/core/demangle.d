@@ -3027,7 +3027,7 @@ CXX_DEMANGLER getCXXDemangler() nothrow @trusted
  *  The demangled name or the original string if the name is not a mangled
  *  C++ name.
  */
-private char[] demangleCXX(return scope const(char)[] buf, CXX_DEMANGLER __cxa_demangle, return scope char[] dst = null,) nothrow pure @trusted
+char[] demangleCXX(return scope const(char)[] buf, CXX_DEMANGLER __cxa_demangle, return scope char[] dst = null,) nothrow pure @trusted
 {
     char[] c_string = dst; // temporarily use dst buffer if possible
     c_string.length = buf.length + 1;
