@@ -40,7 +40,7 @@ struct SymbolBuilder
             if (!children.empty)
                 stack.back.back.children = children;
         }
-        else if (stack.back.length > 1)
+        else if (stack.length > 1)
         {
             stack.back.popBack;
         }
