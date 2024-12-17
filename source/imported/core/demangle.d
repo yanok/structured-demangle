@@ -2092,6 +2092,15 @@ pure @safe:
     */
     void parseMangledName( out bool errStatus, bool displayType, size_t n = 0 ) scope nothrow
     {
+        version(structured_demangle) {
+            static if (do_structured) {
+                auto val_start = dst.length;
+                hooks.enter(Node.Kind.MangledName);
+                scope(success) {
+                    hooks.exit(dst[val_start..$].getSlice);
+                }
+            }
+        }
         debug(trace) printf( "parseMangledName+\n" );
         debug(trace) scope(success) printf( "parseMangledName-\n" );
         BufSlice name = dst.bslice_empty;
