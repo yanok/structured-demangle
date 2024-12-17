@@ -46,15 +46,107 @@ unittest
                 Node(Node.Kind.SymbolName, "getopt!(immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)", [
                     Node(Node.Kind.TemplateInstance, "getopt!(immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)", [
                         Node(Node.Kind.TemplateName, "getopt"),
-                        Node(Node.Kind.TemplateArguments, "immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe")
+                        Node(Node.Kind.TemplateArguments, "immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe", [
+                            Node(Node.Kind.Type, "immutable(char)[]", [
+                                Node(Node.Kind.Type, "immutable(char)", [
+                                    Node(Node.Kind.Type, "char")
+                                ]),
+                            ]),
+                            Node(Node.Kind.Type, "void delegate(immutable(char)[]) pure nothrow @nogc @safe", [
+                                Node(
+                                    Node.Kind.Type, "immutable(char)[]", [
+                                    // TODO: why are some types nested?
+                                    Node(Node.Kind.Type, "immutable(char)[]", [
+                                        Node(Node.Kind.Type, "immutable(char)", [
+                                            Node(Node.Kind.Type, "char")
+                                        ]),
+                                    ]),
+                                ]),
+                                Node(Node.Kind.Type, "void")
+                            ]),
+                            Node(Node.Kind.Type, "immutable(char)[]", [
+                                // TODO: also here
+                                Node(Node.Kind.Type, "immutable(char)[]", [
+                                    Node(Node.Kind.Type, "immutable(char)", [
+                                        Node(Node.Kind.Type, "char")
+                                    ]),
+                                ]),
+                            ]),
+                            Node(Node.Kind.Type, "void delegate(immutable(char)[]) pure nothrow @nogc @safe", [
+                                Node(
+                                    Node.Kind.Type, "immutable(char)[]", [
+                                    // TODO: why are some types nested?
+                                    Node(Node.Kind.Type, "immutable(char)[]", [
+                                        Node(Node.Kind.Type, "immutable(char)", [
+                                            Node(Node.Kind.Type, "char")
+                                        ]),
+                                    ]),
+                                ]),
+                                Node(Node.Kind.Type, "void")
+                            ]),
+                        ])
                     ])
                 ]),
                 Node(Node.Kind.SymbolName, "getopt"),
-                Node(Node.Kind.FunctionTypeNoReturn, "@safe (ref immutable(char)[][], immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)"),
-                Node(Node.Kind.QualifiedName, "std.getopt.GetoptResult", [
-                    Node(Node.Kind.SymbolName, "std"),
-                    Node(Node.Kind.SymbolName, "getopt"),
-                    Node(Node.Kind.SymbolName, "GetoptResult")
+                Node(Node.Kind.FunctionTypeNoReturn, "@safe (ref immutable(char)[][], immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)", [
+                    Node(Node.Kind.Type, "immutable(char)[][]", [
+                        Node(Node.Kind.Type, "immutable(char)[]", [
+                            Node(Node.Kind.Type, "immutable(char)[]", [
+                                Node(Node.Kind.Type, "immutable(char)", [
+                                    Node(Node.Kind.Type, "char")
+                                ])
+                            ])
+                        ])
+                    ]),
+                    Node(Node.Kind.Type, "immutable(char)[]", [
+                        Node(Node.Kind.Type, "immutable(char)[]", [
+                            Node(Node.Kind.Type, "immutable(char)", [
+                                Node(Node.Kind.Type, "char")
+                            ])
+                        ])
+                    ]),
+                    Node(Node.Kind.Type, "void delegate(immutable(char)[]) pure nothrow @nogc @safe", [
+                        Node(Node.Kind.Type, "void delegate(immutable(char)[]) pure nothrow @nogc @safe", [
+                            Node(
+                                Node.Kind.Type, "immutable(char)[]", [
+                                // TODO: why are some types nested?
+                                Node(Node.Kind.Type, "immutable(char)[]", [
+                                    Node(Node.Kind.Type, "immutable(char)", [
+                                        Node(Node.Kind.Type, "char")
+                                    ]),
+                                ]),
+                            ]),
+                            Node(Node.Kind.Type, "void")
+                        ]),
+                    ]),
+                    Node(Node.Kind.Type, "immutable(char)[]", [
+                        Node(Node.Kind.Type, "immutable(char)[]", [
+                            Node(Node.Kind.Type, "immutable(char)", [
+                                Node(Node.Kind.Type, "char")
+                            ])
+                        ])
+                    ]),
+                    Node(Node.Kind.Type, "void delegate(immutable(char)[]) pure nothrow @nogc @safe", [
+                        Node(Node.Kind.Type, "void delegate(immutable(char)[]) pure nothrow @nogc @safe", [
+                            Node(
+                                Node.Kind.Type, "immutable(char)[]", [
+                                // TODO: some types are nested?
+                                Node(Node.Kind.Type, "immutable(char)[]", [
+                                    Node(Node.Kind.Type, "immutable(char)", [
+                                        Node(Node.Kind.Type, "char")
+                                    ]),
+                                ]),
+                            ]),
+                            Node(Node.Kind.Type, "void")
+                        ]),
+                    ])
+                ]),
+                Node(Node.Kind.Type, "std.getopt.GetoptResult", [
+                    Node(Node.Kind.QualifiedName, "std.getopt.GetoptResult", [
+                        Node(Node.Kind.SymbolName, "std"),
+                        Node(Node.Kind.SymbolName, "getopt"),
+                        Node(Node.Kind.SymbolName, "GetoptResult")
+                    ])
                 ])
             ]
             ),
@@ -69,7 +161,9 @@ unittest
                 Node(Node.Kind.SymbolName, "ShiftOr!(char)", [
                     Node(Node.Kind.TemplateInstance, "ShiftOr!(char)", [
                         Node(Node.Kind.TemplateName, "ShiftOr"),
-                        Node(Node.Kind.TemplateArguments, "char")
+                        Node(Node.Kind.TemplateArguments, "char", [
+                            Node(Node.Kind.Type, "char")
+                        ])
                     ])
                 ]),
                 Node(Node.Kind.SymbolName, "ShiftOr"),
@@ -88,25 +182,32 @@ unittest
                                 Node(Node.Kind.SymbolName, "ShiftOr!(char)", [
                                     Node(Node.Kind.TemplateInstance, "ShiftOr!(char)", [
                                         Node(Node.Kind.TemplateName, "ShiftOr"),
-                                        Node(Node.Kind.TemplateArguments, "char")
+                                        Node(Node.Kind.TemplateArguments, "char", [
+                                            Node(Node.Kind.Type, "char")
+                                        ])
                                     ])
                                 ]),
                                 Node(Node.Kind.SymbolName, "ShiftOr"),
                                 Node(Node.Kind.SymbolName, "ShiftThread"),
                                 Node(Node.Kind.SymbolName, "setInvMask"),
                                 Node(
-                                Node.Kind.FunctionTypeNoReturn, "(uint, uint)")
+                                Node.Kind.FunctionTypeNoReturn, "(uint, uint)", [
+                                    Node(Node.Kind.Type, "uint"),
+                                    Node(Node.Kind.Type, "uint"),
+                                ]),
+                                Node(Node.Kind.Type, "void")
                             ]),
                         ])
                     ]),
                 ]),
                 Node(Node.Kind.SymbolName, "set"),
-                Node(Node.Kind.FunctionTypeNoReturn,
-                    "pure @safe (dchar)")
+                Node(Node.Kind.FunctionTypeNoReturn, "pure @safe (dchar)", [
+                    Node(Node.Kind.Type, "dchar")
+                ]),
+                Node(Node.Kind.Type, "void")
             ]
             )
     ];
-
     import std.format;
 
     foreach (s, r; examples)
