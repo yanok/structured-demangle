@@ -39,7 +39,8 @@ unittest
                 "@safe std.getopt.GetoptResult std.getopt.getopt!(immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, "
                     ~ "immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)."
                     ~ "getopt(ref immutable(char)[][], immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, "
-                    ~ "immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)"
+                    ~ "immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)",
+                [Node(Node.Kind.QualifiedName, "std.getopt.GetoptResult")]
             ),
             "_D3std5regex8internal9kickstart__T7ShiftOrTaZQl11ShiftThread__T3setS_DQCqQCpQCmQCg__TQBzTaZQCfQBv10setInvMaskMFNaNbNiNfkkZvZQCjMFNaNfwZv": Node(
                 Node.Kind.MangledName,
