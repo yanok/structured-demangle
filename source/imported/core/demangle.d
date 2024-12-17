@@ -732,6 +732,15 @@ pure @safe:
     */
     BufSlice parseType(out bool errStatus) return scope nothrow
     {
+        version(structured_demangle) {
+            static if (do_structured) {
+                auto val_start = dst.length;
+                hooks.enter(Node.Kind.Type);
+                scope(success) {
+                    hooks.exit(dst[val_start..$].getSlice);
+                }
+            }
+        }
         static immutable string[23] primitives = [
             "char", // a
             "bool", // b
