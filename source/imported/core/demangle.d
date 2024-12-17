@@ -2840,10 +2840,10 @@ unittest
     {
         char[] buf = new char[i];
         auto ds = demangle(s, buf);
-        assert(ds == "pure nothrow @safe char[] core.demangle.demangle(scope return const(char)[], scope return char[], extern (C) char* function(const(char*), char*, ulong*, int*) pure nothrow @trusted*)" ||
-               ds == "pure nothrow @safe char[] core.demangle.demangle(return scope const(char)[], return scope char[], extern (C) char* function(const(char*), char*, ulong*, int*) pure nothrow @trusted*)" ||
-               ds == "pure nothrow @safe char[] core.demangle.demangle(scope return const(char)[], scope return char[], extern (C) char* function(const(char*), char*, uint*, int*) pure nothrow @trusted*)" ||
-               ds == "pure nothrow @safe char[] core.demangle.demangle(return scope const(char)[], return scope char[], extern (C) char* function(const(char*), char*, uint*, int*) pure nothrow @trusted*)", ds);
+        assert(ds == "pure nothrow @safe char[] imported.core.demangle.demangle(scope return const(char)[], scope return char[], extern (C) char* function(const(char*), char*, ulong*, int*) pure nothrow @trusted*)" ||
+               ds == "pure nothrow @safe char[] imported.core.demangle.demangle(return scope const(char)[], return scope char[], extern (C) char* function(const(char*), char*, ulong*, int*) pure nothrow @trusted*)" ||
+               ds == "pure nothrow @safe char[] imported.core.demangle.demangle(scope return const(char)[], scope return char[], extern (C) char* function(const(char*), char*, uint*, int*) pure nothrow @trusted*)" ||
+               ds == "pure nothrow @safe char[] imported.core.demangle.demangle(return scope const(char)[], return scope char[], extern (C) char* function(const(char*), char*, uint*, int*) pure nothrow @trusted*)", ds);
     }
 }
 
