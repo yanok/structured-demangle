@@ -41,19 +41,46 @@ unittest
                     ~ "getopt(ref immutable(char)[][], immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, "
                     ~ "immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)",
                 [
+                Node(Node.Kind.SymbolName, "std"),
+                Node(Node.Kind.SymbolName, "getopt"),
+                Node(Node.Kind.SymbolName, "getopt!(immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)"),
+                Node(Node.Kind.SymbolName, "getopt"),
                 Node(Node.Kind.FunctionTypeNoReturn, "@safe (ref immutable(char)[][], immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)"),
-                Node(Node.Kind.QualifiedName, "std.getopt.GetoptResult")
+                Node(Node.Kind.QualifiedName, "std.getopt.GetoptResult", [
+                    Node(Node.Kind.SymbolName, "std"),
+                    Node(Node.Kind.SymbolName, "getopt"),
+                    Node(Node.Kind.SymbolName, "GetoptResult")
+                ])
             ]
             ),
             "_D3std5regex8internal9kickstart__T7ShiftOrTaZQl11ShiftThread__T3setS_DQCqQCpQCmQCg__TQBzTaZQCfQBv10setInvMaskMFNaNbNiNfkkZvZQCjMFNaNfwZv": Node(
                 Node.Kind.MangledName,
                 "pure @safe void std.regex.internal.kickstart.ShiftOr!(char).ShiftOr.ShiftThread.set!(std.regex.internal.kickstart.ShiftOr!(char).ShiftOr.ShiftThread.setInvMask(uint, uint)).set(dchar)",
                 [
-                Node(
-                    Node.Kind.MangledName,
-                    "std.regex.internal.kickstart.ShiftOr!(char).ShiftOr.ShiftThread.setInvMask(uint, uint)", [
-                    Node(Node.Kind.FunctionTypeNoReturn, "(uint, uint)")
+                Node(Node.Kind.SymbolName, "std"),
+                Node(Node.Kind.SymbolName, "regex"),
+                Node(Node.Kind.SymbolName, "internal"),
+                Node(Node.Kind.SymbolName, "kickstart"),
+                Node(Node.Kind.SymbolName, "ShiftOr!(char)"),
+                Node(Node.Kind.SymbolName, "ShiftOr"),
+                Node(Node.Kind.SymbolName, "ShiftThread"),
+                Node(Node.Kind.SymbolName, "set!(std.regex.internal.kickstart.ShiftOr!(char).ShiftOr.ShiftThread.setInvMask(uint, uint))", [
+                    Node(
+                        Node.Kind.MangledName,
+                        "std.regex.internal.kickstart.ShiftOr!(char).ShiftOr.ShiftThread.setInvMask(uint, uint)", [
+                        Node(Node.Kind.SymbolName, "std"),
+                        Node(Node.Kind.SymbolName, "regex"),
+                        Node(Node.Kind.SymbolName, "internal"),
+                        Node(Node.Kind.SymbolName, "kickstart"),
+                        Node(Node.Kind.SymbolName, "ShiftOr!(char)"),
+                        Node(Node.Kind.SymbolName, "ShiftOr"),
+                        Node(Node.Kind.SymbolName, "ShiftThread"),
+                        Node(Node.Kind.SymbolName, "setInvMask"),
+                        Node(
+                        Node.Kind.FunctionTypeNoReturn, "(uint, uint)")
+                    ]),
                 ]),
+                Node(Node.Kind.SymbolName, "set"),
                 Node(Node.Kind.FunctionTypeNoReturn,
                     "pure @safe (dchar)")
             ]
