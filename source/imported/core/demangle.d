@@ -2060,6 +2060,15 @@ pure @safe:
     */
     void parseQualifiedName(out bool errStatus) return scope nothrow
     {
+        version(structured_demangle) {
+            static if (do_structured) {
+                auto val_start = dst.length;
+                hooks.enter(Node.Kind.QualifiedName);
+                scope(success) {
+                    hooks.exit(dst[val_start..$].getSlice);
+                }
+            }
+        }
         debug(trace) printf( "parseQualifiedName+\n" );
         debug(trace) scope(success) printf( "parseQualifiedName-\n" );
 
