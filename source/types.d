@@ -26,28 +26,20 @@ struct Node
     Kind kind;
     string value;
     Node[] children;
-    this(Kind k, string v)
+    this(Kind k) nothrow pure @safe
     {
         kind = k;
+    }
+
+    this(Kind k, string v) nothrow pure @safe
+    {
+        this(k);
         value = v;
     }
 
-    this(Kind k, string v, Node[] ch)
+    this(Kind k, string v, Node[] ch) nothrow pure @safe
     {
         this(k, v);
         children = ch;
     }
-
-    static private string buildFactory(Kind k)
-    {
-        auto name = to!string(k);
-        return "static " ~ name ~ "(string v) { return Node(Kind." ~ name ~ ", v); }\n" ~
-            "static " ~ name ~ "(string v, Node[] ch) { return Node(Kind." ~ name ~ ", v, ch); }";
-    }
-
-    static foreach (k; EnumMembers!Kind)
-    {
-        mixin(buildFactory(k));
-    }
-
 }
