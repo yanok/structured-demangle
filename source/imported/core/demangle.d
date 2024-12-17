@@ -21,6 +21,11 @@ else version (TVOS)
 else version (WatchOS)
     version = Darwin;
 
+version(structured_demangle) {
+    import symbol_builder;
+    import types;
+}
+
 debug(trace) import core.stdc.stdio : printf;
 debug(info) import core.stdc.stdio : printf;
 
