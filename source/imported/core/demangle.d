@@ -1999,6 +1999,15 @@ pure @safe:
     // if keepAttr, the calling convention and function attributes are not discarded, but returned
     BufSlice parseFunctionTypeNoReturn( bool keepAttr = false ) return scope nothrow
     {
+        version(structured_demangle) {
+            static if (do_structured) {
+                auto val_start = dst.length;
+                hooks.enter(Node.Kind.FunctionTypeNoReturn);
+                scope(success) {
+                    hooks.exit(dst[val_start..$].getSlice);
+                }
+            }
+        }
         // try to demangle a function, in case we are pointing to some function local
         auto prevpos = pos;
         auto prevlen = dst.length;
