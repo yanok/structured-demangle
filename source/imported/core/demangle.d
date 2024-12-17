@@ -1878,6 +1878,16 @@ pure @safe:
     */
     void parseTemplateInstanceName(out bool errStatus, bool hasNumber) scope nothrow
     {
+        version(structured_demangle) {
+            static if (do_structured) {
+                auto val_start = dst.length;
+                hooks.enter(Node.Kind.TemplateInstance);
+                scope(success) {
+                    hooks.exit(dst[val_start..$].getSlice);
+                }
+                hooks.enter(Node.Kind.TemplateName);
+            }
+        }
         debug(trace) printf( "parseTemplateInstanceName+\n" );
         debug(trace) scope(success) printf( "parseTemplateInstanceName-\n" );
 
@@ -1909,6 +1919,12 @@ pure @safe:
             parseLName(errMsg);
             if (errMsg !is null)
                 return onError();
+        }
+
+        version(structured_demangle) {
+            static if (do_structured) {
+                hooks.exit(dst[val_start..$].getSlice);
+            }
         }
 
         put( "!(" );
