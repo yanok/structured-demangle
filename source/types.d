@@ -3,6 +3,7 @@ module types;
 import std.conv;
 import std.range;
 import std.traits;
+import std.json;
 
 struct Node
 {
@@ -41,5 +42,16 @@ struct Node
     {
         this(k, v);
         children = ch;
+    }
+
+    JSONValue toJSON()
+    {
+        import std.algorithm;
+
+        return JSONValue([
+            "Node": JSONValue(to!string(kind)),
+            "Value": JSONValue(value),
+            "children": JSONValue(children.map!(x => x.toJSON).array)
+        ]);
     }
 }
