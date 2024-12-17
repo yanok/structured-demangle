@@ -29,3 +29,26 @@ Node structuredDemangle(return scope const(char)[] buf, return scope char[] dst 
     assert(res.value == demangled);
     return res;
 }
+
+unittest
+{
+    auto examples = [
+        [
+            "_D3std6getopt__TQkTAyaTDFNaNbNiNfQoZvTQtTDQsZQBnFNfKAQBiQBlQBkQBrQyZSQCpQCo12GetoptResult",
+            "@safe std.getopt.GetoptResult std.getopt.getopt!(immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, "
+            ~ "immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)."
+            ~ "getopt(ref immutable(char)[][], immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, "
+            ~ "immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)"
+        ],
+        [
+            "_D3std5regex8internal9kickstart__T7ShiftOrTaZQl11ShiftThread__T3setS_DQCqQCpQCmQCg__TQBzTaZQCfQBv10setInvMaskMFNaNbNiNfkkZvZQCjMFNaNfwZv",
+            "pure @safe void std.regex.internal.kickstart.ShiftOr!(char).ShiftOr.ShiftThread.set!(std.regex.internal.kickstart.ShiftOr!(char).ShiftOr.ShiftThread.setInvMask(uint, uint)).set(dchar)"
+        ],
+    ];
+
+    foreach (e; examples)
+    {
+        auto res = structuredDemangle(e[0]);
+        assert(res.kind == Node.Kind.DMangled);
+    }
+}
