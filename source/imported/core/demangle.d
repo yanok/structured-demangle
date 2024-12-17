@@ -43,6 +43,9 @@ private struct NoHooks
 
 struct Demangle(Hooks = NoHooks)
 {
+    version(structured_demangle) {
+         enum do_structured = __traits(isSame, Hooks, SymbolBuilder);
+    }
     // NOTE: This implementation currently only works with mangled function
     //       names as they exist in an object file.  Type names mangled via
     //       the .mangleof property are effectively incomplete as far as the
