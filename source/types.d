@@ -1,59 +1,53 @@
 module types;
 
-abstract class Node
+import std.conv;
+import std.range;
+import std.traits;
+
+struct Node
 {
+    enum Kind
+    {
+        NonMangled,
+        CxxMangled,
+        DMangled,
+        MangledName,
+        QualifiedName,
+        FunctionTypeNoReturn,
+        SymbolName,
+        TemplateInstance,
+        TemplateName,
+        TemplateArguments,
+        Value,
+        FunctionArguments,
+        Type
+    }
+
+    Kind kind;
     string value;
     Node[] children;
-}
+    this(Kind k, string v)
+    {
+        kind = k;
+        value = v;
+    }
 
-final class NonMangled : Node
-{
-}
+    this(Kind k, string v, Node[] ch)
+    {
+        this(k, v);
+        children = ch;
+    }
 
-final class CxxMangled : Node
-{
-}
+    static private string buildFactory(Kind k)
+    {
+        auto name = to!string(k);
+        return "static " ~ name ~ "(string v) { return Node(Kind." ~ name ~ ", v); }\n" ~
+            "static " ~ name ~ "(string v, Node[] ch) { return Node(Kind." ~ name ~ ", v, ch); }";
+    }
 
-final class DMangled : Node
-{
-}
+    static foreach (k; EnumMembers!Kind)
+    {
+        mixin(buildFactory(k));
+    }
 
-final class MangledName : Node
-{
-}
-
-final class QualifiedName : Node
-{
-}
-
-final class FunctionTypeNoReturn : Node
-{
-}
-
-final class SymbolName : Node
-{
-}
-
-final class TemplateInstance : Node
-{
-}
-
-final class TemplateName : Node
-{
-}
-
-final class TemplateArguments : Node
-{
-}
-
-final class Value : Node
-{
-}
-
-final class FunctionArguments : Node
-{
-}
-
-final class Type : Node
-{
 }
