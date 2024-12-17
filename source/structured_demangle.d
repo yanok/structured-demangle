@@ -45,7 +45,8 @@ unittest
                 Node(Node.Kind.SymbolName, "getopt"),
                 Node(Node.Kind.SymbolName, "getopt!(immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)", [
                     Node(Node.Kind.TemplateInstance, "getopt!(immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe)", [
-                        Node(Node.Kind.TemplateName, "getopt")
+                        Node(Node.Kind.TemplateName, "getopt"),
+                        Node(Node.Kind.TemplateArguments, "immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe, immutable(char)[], void delegate(immutable(char)[]) pure nothrow @nogc @safe")
                     ])
                 ]),
                 Node(Node.Kind.SymbolName, "getopt"),
@@ -67,7 +68,8 @@ unittest
                 Node(Node.Kind.SymbolName, "kickstart"),
                 Node(Node.Kind.SymbolName, "ShiftOr!(char)", [
                     Node(Node.Kind.TemplateInstance, "ShiftOr!(char)", [
-                        Node(Node.Kind.TemplateName, "ShiftOr")
+                        Node(Node.Kind.TemplateName, "ShiftOr"),
+                        Node(Node.Kind.TemplateArguments, "char")
                     ])
                 ]),
                 Node(Node.Kind.SymbolName, "ShiftOr"),
@@ -75,25 +77,27 @@ unittest
                 Node(Node.Kind.SymbolName, "set!(std.regex.internal.kickstart.ShiftOr!(char).ShiftOr.ShiftThread.setInvMask(uint, uint))", [
                     Node(Node.Kind.TemplateInstance, "set!(std.regex.internal.kickstart.ShiftOr!(char).ShiftOr.ShiftThread.setInvMask(uint, uint))", [
                         Node(Node.Kind.TemplateName, "set"),
-                        Node(
-                            Node.Kind.MangledName,
-                            "std.regex.internal.kickstart.ShiftOr!(char).ShiftOr.ShiftThread.setInvMask(uint, uint)", [
-                            Node(Node.Kind.SymbolName, "std"),
-                            Node(Node.Kind.SymbolName, "regex"),
-                            Node(Node.Kind.SymbolName, "internal"),
-                            Node(Node.Kind.SymbolName, "kickstart"),
-                            Node(Node.Kind.SymbolName, "ShiftOr!(char)", [
-                                Node(Node.Kind.TemplateInstance, "ShiftOr!(char)", [
-                                    Node(Node.Kind.TemplateName, "ShiftOr")
-                                ])
-                            ]),
-                            Node(Node.Kind.SymbolName, "ShiftOr"),
-                            Node(Node.Kind.SymbolName, "ShiftThread"),
-                            Node(Node.Kind.SymbolName, "setInvMask"),
+                        Node(Node.Kind.TemplateArguments, "std.regex.internal.kickstart.ShiftOr!(char).ShiftOr.ShiftThread.setInvMask(uint, uint)", [
                             Node(
-                            Node.Kind.FunctionTypeNoReturn, "(uint, uint)")
-                        ]),
-
+                                Node.Kind.MangledName,
+                                "std.regex.internal.kickstart.ShiftOr!(char).ShiftOr.ShiftThread.setInvMask(uint, uint)", [
+                                Node(Node.Kind.SymbolName, "std"),
+                                Node(Node.Kind.SymbolName, "regex"),
+                                Node(Node.Kind.SymbolName, "internal"),
+                                Node(Node.Kind.SymbolName, "kickstart"),
+                                Node(Node.Kind.SymbolName, "ShiftOr!(char)", [
+                                    Node(Node.Kind.TemplateInstance, "ShiftOr!(char)", [
+                                        Node(Node.Kind.TemplateName, "ShiftOr"),
+                                        Node(Node.Kind.TemplateArguments, "char")
+                                    ])
+                                ]),
+                                Node(Node.Kind.SymbolName, "ShiftOr"),
+                                Node(Node.Kind.SymbolName, "ShiftThread"),
+                                Node(Node.Kind.SymbolName, "setInvMask"),
+                                Node(
+                                Node.Kind.FunctionTypeNoReturn, "(uint, uint)")
+                            ]),
+                        ])
                     ]),
                 ]),
                 Node(Node.Kind.SymbolName, "set"),
